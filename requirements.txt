@@ -1,1 +1,11 @@
-fastapi\npydantic\nutralo\ntransformers\nscikit-learn\nnumpy\npandas\ntorch\npymongo\ndocker\nkubernetes
+fastapi
+pydantic
+transformers
+scikit-learn
+numpy
+pandas
+torch
+pymongo
+docker
+kubernetes
+uvicorn
