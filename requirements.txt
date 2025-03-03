@@ -9,3 +9,18 @@ pymongo
 docker
 kubernetes
 uvicorn
+<<<<<<< HEAD
+=======
+pymupdf
+python-docx
+pytesseract
+opencv-python
+sentence-transformers
+langdetect
+PySastrawi
+tqdm
+nltk
+textblob
+gensim
+scipy
+>>>>>>> ed2a314 (preprocess text)
