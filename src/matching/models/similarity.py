@@ -125,18 +125,14 @@ job_names = [job.replace(".txt", "") for job in job_files]
 similarity_matrix = pd.DataFrame([result[0] for result in results], index=cv_names, columns=job_names)
 
 # 🔥 **Atur threshold similarity untuk highlight warna**
-threshold = 0.75  
 max_similarity = similarity_matrix.max().max()  
 min_similarity = similarity_matrix.min().min()
-
-# 🔥 **Buat mask untuk highlight top matches**
-top_match_mask = similarity_matrix.apply(lambda x: x == x.max(), axis=1)
 
 plt.figure(figsize=(12, 8))
 
 # 🔥 **Plot Heatmap dengan skala warna "RdYlGn"**
-sns.heatmap(similarity_matrix, annot=True, fmt=".2f", cmap="RdYlGn", linewidths=0.5,
-            vmin=min_similarity, vmax=max_similarity, cbar_kws={'label': 'Similarity Score'})
+ax = sns.heatmap(similarity_matrix, annot=True, fmt=".2f", cmap="RdYlGn", linewidths=0.5,
+                 vmin=min_similarity, vmax=max_similarity, cbar_kws={'label': 'Similarity Score'})
 
 # 🔥 **Tambahkan threshold garis**
 plt.axhline(y=-0.5, color='black', linewidth=2)  
@@ -149,15 +145,19 @@ plt.ylabel("CV Pelamar", fontsize=12)
 plt.xticks(rotation=45, ha="right")  
 plt.yticks(fontsize=10)
 
-# 🔥 **Tambahkan legenda keterangan skala warna**
-cbar = plt.colorbar(plt.cm.ScalarMappable(cmap="RdYlGn"), ax=plt.gca())
-cbar.set_label("Similarity Score", fontsize=12)
+# 🔥 **Tambahkan legenda manual di bawah heatmap**
+legend_text = """
+🔴 **Merah**  = Similarity rendah  
+🟡 **Kuning** = Similarity sedang  
+🟢 **Hijau**  = Similarity tinggi  
+"""
+plt.figtext(0.5, -0.08, legend_text, wrap=True, horizontalalignment='center', fontsize=10, fontweight="bold")
 
 plt.tight_layout()
 
 # 🔥 **Simpan Heatmap ke file**
 os.makedirs("output", exist_ok=True)  # Buat folder output jika belum ada
-plt.savefig("output/heatmap_similarity.png", dpi=300, bbox_inches="tight")
+plt.savefig("output/heatmap_similarity_fixed.png", dpi=300, bbox_inches="tight")
 
 # 🔥 **Tampilkan Heatmap**
 plt.show()
