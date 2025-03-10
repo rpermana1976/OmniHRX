@@ -9,8 +9,6 @@ pymongo
 docker
 kubernetes
 uvicorn
-<<<<<<< HEAD
-=======
 pymupdf
 python-docx
 pytesseract
@@ -23,4 +21,3 @@ nltk
 textblob
 gensim
 scipy
->>>>>>> ed2a314 (preprocess text)
