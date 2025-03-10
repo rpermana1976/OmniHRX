@@ -5,3 +5,4 @@ data/raw_data/
 data/processed_data/
 data/final_data/
 models/
+cache/
