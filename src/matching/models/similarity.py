@@ -87,7 +87,7 @@ def match_resume_to_jobs(resume_text, job_texts):
         sbert_score = sbert_similarity(resume_text, job_text)
 
         # 🔥 **Hitung Final Score dengan bobot masing-masing model**
-        final_score = (0.10 * w2v_score) + (0.20 * ft_score) + (0.70 * sbert_score)
+        final_score = (0.10 * w2v_score) + (0.30 * ft_score) + (0.60 * sbert_score)
 
         # 🔥 Simpan detail setiap skor
         detailed_results.append({
